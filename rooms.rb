@@ -15,6 +15,10 @@ class Rooms
 
   def add_guest(guest)
     @capacity.push(guest)
-  end 
+  end
+
+  def check_out_guest(guest)
+    @capacity.delete(guest)
+  end
 
 end
