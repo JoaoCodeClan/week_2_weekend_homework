@@ -1,12 +1,16 @@
 class Guest
 
-def initialize(name)
-@name = name
+  def initialize(name, money)
+    @name = name
+    @money = money
+  end
 
-end
+  def name
+    return @name
 
-def name
-return @name
+  end
 
-end
+  def money
+    return @money
+  end
 end

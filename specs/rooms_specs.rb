@@ -13,6 +13,11 @@ class TestRooms < MiniTest::Test
     @song_new = Song.new("Oughta Know", "Alanis Morissette")
     @guest_1 = Guest.new("Charles")
     @guest_2 = Guest.new("Sarah")
+    @guest_3 = Guest.new("Tanya")
+    @guest_4 = Guest.new("Joseph")
+    @guest_5 = Guest.new("David")
+    @guest_6 = Guest.new("Osmar")
+
   end
 
   def test_room_has_name
@@ -41,5 +46,17 @@ class TestRooms < MiniTest::Test
     @room1.add_song_to_room(@song_new)
     assert_equal([@song_new],@room1.check_playlist)
   end
+
+  def test_if_room_capacity_is_not_broken
+    @room1.add_guest("Charles")
+    @room1.add_guest("Sarah")
+    @room1.add_guest("Tanya")
+    @room1.add_guest("Joseph")
+    @room1.add_guest("David")
+    @room1.add_guest("Osmar")
+    assert_equal(["Dan", "Judit","Charles", "Sarah"], @room1.guests_inside)
+  end
+
+
 
 end
