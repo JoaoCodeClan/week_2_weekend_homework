@@ -9,7 +9,7 @@ class TestRooms < MiniTest::Test
 
 
   def setup
-    @room1 = Rooms.new("Rock", ["Dan", "Judit"])
+    @room1 = Rooms.new("Rock", ["Dan", "Judit"],[])
     @song_new = Song.new("Oughta Know", "Alanis Morissette")
     @guest_1 = Guest.new("Charles")
     @guest_2 = Guest.new("Sarah")
@@ -27,9 +27,15 @@ class TestRooms < MiniTest::Test
     @room1.add_guest("Charles")
     assert_equal(["Dan", "Judit","Charles"], @room1.capacity)
   end
-def test_room_can_check_out_guest
-  @room1.check_out_guest("Charles")
-  assert_equal(["Dan", "Judit"], @room1.capacity)
-end
+
+  def test_room_can_check_out_guest
+    @room1.check_out_guest("Charles")
+    assert_equal(["Dan", "Judit"], @room1.capacity)
+  end
+
+  def test_add_song_to_room
+    @room1.add_song_to_room(@song_new)
+    assert_equal([@song_new],@room1.check_playlist)
+  end
 
 end
