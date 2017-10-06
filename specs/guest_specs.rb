@@ -17,6 +17,6 @@ end
 
 def test_guest_has_money
   assert_equal(100, @guest1.money)
-end 
+end
 
 end

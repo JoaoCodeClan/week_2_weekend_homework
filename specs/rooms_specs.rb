@@ -9,14 +9,14 @@ class TestRooms < MiniTest::Test
 
 
   def setup
-    @room1 = Rooms.new("Rock", 4, ["Dan", "Judit"],[])
+    @room1 = Rooms.new("Rock", 4, 100, ["Dan", "Judit"],[])
     @song_new = Song.new("Oughta Know", "Alanis Morissette")
-    @guest_1 = Guest.new("Charles")
-    @guest_2 = Guest.new("Sarah")
-    @guest_3 = Guest.new("Tanya")
-    @guest_4 = Guest.new("Joseph")
-    @guest_5 = Guest.new("David")
-    @guest_6 = Guest.new("Osmar")
+    @guest_1 = Guest.new("Charles",101)
+    @guest_2 = Guest.new("Sarah", 0)
+    @guest_3 = Guest.new("Tanya", 0)
+    @guest_4 = Guest.new("Joseph", 0)
+    @guest_5 = Guest.new("David", 0)
+    @guest_6 = Guest.new("Osmar", 0)
 
   end
 
@@ -32,9 +32,13 @@ class TestRooms < MiniTest::Test
     assert_equal(["Dan", "Judit"], @room1.guests_inside)
   end
 
+  def test_room_has_fee
+    assert_equal(100, @room1.what_fee)
+  end
+
   def test_room_can_check_in_guests
-    @room1.add_guest("Charles")
-    assert_equal(["Dan", "Judit","Charles"], @room1.guests_inside)
+    @room1.add_guest(@guest_1)
+    assert_equal(["Dan", "Judit",@guest_1], @room1.guests_inside)
   end
 
   def test_room_can_check_out_guest
@@ -48,13 +52,23 @@ class TestRooms < MiniTest::Test
   end
 
   def test_if_room_capacity_is_not_broken
-    @room1.add_guest("Charles")
-    @room1.add_guest("Sarah")
-    @room1.add_guest("Tanya")
-    @room1.add_guest("Joseph")
-    @room1.add_guest("David")
-    @room1.add_guest("Osmar")
-    assert_equal(["Dan", "Judit","Charles", "Sarah"], @room1.guests_inside)
+    @room1.add_guest(@guest_1)
+    @room1.add_guest(@guest_2)
+    @room1.add_guest(@guest_3)
+    @room1.add_guest(@guest_4)
+    @room1.add_guest(@guest_5)
+    @room1.add_guest(@guest_6)
+    assert_equal(["Dan", "Judit",@guest_1], @room1.guests_inside)
+  end
+
+  def test_if_guest_has_enough_money
+    result = @room1.add_guest(@guest_1)
+    assert_equal("Welcome in Charles", result)
+  end
+  
+  def test_if_guest_does_not_have_enough_money_for_room
+    result= @room1.add_guest(@guest_5)
+    assert_equal("Sorry you can't afford this room", result)
   end
 
 
