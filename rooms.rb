@@ -1,9 +1,10 @@
 class Rooms
 
-  def initialize(room_name, capacity,playlist)
+  def initialize(room_name, capacity, guests_inside, playlist)
     @room_name = room_name
     @capacity = capacity
     @playlist = playlist
+    @guests_inside = guests_inside
   end
 
   def room_name
@@ -14,20 +15,24 @@ class Rooms
     return @capacity
   end
 
+  def guests_inside
+    return @guests_inside
+  end
+
   def add_guest(guest)
-    @capacity.push(guest)
+    @guests_inside.push(guest)
   end
 
   def check_out_guest(guest)
-    @capacity.delete(guest)
+    @guests_inside.delete(guest)
   end
 
   def check_playlist
     return @playlist
   end
 
-def add_song_to_room(song)
-  return @playlist.push(song)
-end 
+  def add_song_to_room(song)
+    return @playlist.push(song)
+  end
 
 end
