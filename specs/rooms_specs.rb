@@ -12,7 +12,7 @@ def setup
 end
 
 def test_room_has_name
- assert_equal("Rock", @room1.name)
+ assert_equal("Rock", @room1.room_name)
 end
 
 def test_room_has_capacity_of_6
