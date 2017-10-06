@@ -7,7 +7,7 @@ class TestRooms < MiniTest::Test
 
 
 def setup
-@room1 = Rooms.new("Rock", 6)
+@room1 = Rooms.new("Rock", ["Dan", "Judit"])
 
 end
 
@@ -16,7 +16,7 @@ def test_room_has_name
 end
 
 def test_room_has_capacity_of_6
-assert_equal(6, @room1.capacity)
+assert_equal(["Dan", "Judit"], @room1.capacity)
 end
 
 end
