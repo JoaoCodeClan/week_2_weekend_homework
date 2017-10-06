@@ -65,7 +65,7 @@ class TestRooms < MiniTest::Test
     result = @room1.add_guest(@guest_1)
     assert_equal("Welcome in Charles", result)
   end
-  
+
   def test_if_guest_does_not_have_enough_money_for_room
     result= @room1.add_guest(@guest_5)
     assert_equal("Sorry you can't afford this room", result)
