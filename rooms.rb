@@ -13,4 +13,8 @@ class Rooms
     return @capacity
   end
 
+  def add_guest(guest)
+    @capacity.push(guest)
+  end 
+
 end
