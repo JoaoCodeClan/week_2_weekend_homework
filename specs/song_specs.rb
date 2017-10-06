@@ -10,13 +10,14 @@ def setup()
  @song = Song.new("Liquid Diamonds", "Tori Amos")
 end
 
-def test_song_has_title
+def test_song_has_title()
 assert_equal("Liquid Diamonds", @song.title)
 
 end
 
-def test_song_has_artist
-assert-equal("Tori Amos", @song.artist)
-end 
+def test_song_has_artist()
+
+assert_equal("Tori Amos", @song.artist)
+end
 
 end
