@@ -17,5 +17,11 @@ class Guest
 
   def favourite_song()
     return @favourite_song
-  end 
+  end
+
+  def listen_to_music(room)
+    if room.check_playlist.include?(@favourite_song)
+      return "WHOOOO"
+    end
+  end
 end

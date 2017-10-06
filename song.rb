@@ -10,6 +10,6 @@ class Song
 
  def artist
    return @artist
- end 
+ end
 
 end
