@@ -30,11 +30,11 @@ class Rooms
       @guests_inside.push(guest)
       "Welcome in #{guest.name}"
     elsif @guests_inside.count > @capacity
-       "Sorry the room is full"
+      "Sorry the room is full"
     elsif guest.money < @fee
       @guests_inside.delete(guest)
-       "Sorry you can't afford this room"
-       end
+      "Sorry you can't afford this room"
+    end
 
   end
 
@@ -51,4 +51,15 @@ class Rooms
     return @playlist.push(song)
   end
 
-end
+  def play_music()
+    # guest_inside = @guests_inside.each {|guest| guest.favourite_song}
+    song_playing = @playlist.each {|song| song.title}
+    @guests_inside.each  do |guest|
+      if guest.favourite_song == song_playing
+          guest.excited
+      end
+    end
+
+  end
+
+  end

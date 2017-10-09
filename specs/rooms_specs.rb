@@ -10,13 +10,15 @@ class TestRooms < MiniTest::Test
 
   def setup
     @room1 = Rooms.new("Rock", 4, 100, ["Dan", "Judit"],[])
+    @room2 = Rooms.new("Rock", 4, 0, [],[])
+
     @song_new = Song.new("Oughta Know", "Alanis Morissette")
-    @guest_1 = Guest.new("Charles",101)
-    @guest_2 = Guest.new("Sarah", 0)
-    @guest_3 = Guest.new("Tanya", 0)
-    @guest_4 = Guest.new("Joseph", 0)
-    @guest_5 = Guest.new("David", 0)
-    @guest_6 = Guest.new("Osmar", 0)
+    @guest_1 = Guest.new("Charles",101, "Song 2")
+    @guest_2 = Guest.new("Sarah", 0, "Song 2")
+    @guest_3 = Guest.new("Tanya", 0, "Oughta Know")
+    @guest_4 = Guest.new("Joseph", 0, "Song 2")
+    @guest_5 = Guest.new("David", 0, "Song 2")
+    @guest_6 = Guest.new("Osmar", 0, "Song 2")
 
   end
 
@@ -71,6 +73,12 @@ class TestRooms < MiniTest::Test
     assert_equal("Sorry you can't afford this room", result)
   end
 
+  def test_Guest_react_to_favourite_song
+    @room2.add_guest(@guest_3)
 
+    @room2.add_song_to_room(@song_new)
+    result = @room2.play_music()
+    assert_equal("WHOOOO", result)
+  end
 
 end

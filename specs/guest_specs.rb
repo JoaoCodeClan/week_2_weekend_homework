@@ -28,13 +28,18 @@ class TestGuest < MiniTest::Test
     assert_equal( "Presents from the poisoned hearted", @guest1.favourite_song)
   end
 
-  def test_if_guest_reacts_to_favourite_song
-    result = @guest1.listen_to_music(@room)
-    assert_equal("WHOOOO", result)
-  end
+#   def test_if_guest_reacts_to_favourite_song
+#     result = @guest1.listen_to_music(@room)
+#     assert_equal("WHOOOO", result)
+#   end
+#
+#   def test_guest_nil_reaction
+#     result = @guest2.listen_to_music(@room)
+#     assert_equal(nil, result)
+#   end
 
-  def test_guest_nil_reaction
-    result = @guest2.listen_to_music(@room)
-    assert_equal(nil, result)
-  end
+def test_if_guest_excited
+  assert_equal("WHOOOO", @guest1.excited)
 end
+
+ end
